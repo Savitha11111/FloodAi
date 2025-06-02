@@ -68,12 +68,6 @@ chmod +x install.sh
 - **Professional Interface:** Clean, modern design with intuitive navigation
 - **Time Accuracy:** Proper IST timezone handling for Indian locations
 
-## 📊 Data Sources
-
-- **Ambee API:** Real-time disaster and flood monitoring
-- **OpenWeather API:** Current weather and precipitation data
-- **Sentinel Hub:** High-resolution satellite imagery
-- **Multi-source Validation:** Cross-reference for enhanced accuracy
 
 ## 🐳 Docker Configuration
 
