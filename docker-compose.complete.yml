@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  floodscope-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: floodscope-ai-complete
+    ports:
+      - "5000:5000"
+    environment:
+      - APP_NAME=FloodScope AI Complete
+      - ENVIRONMENT=production
+      - PORT=5000
+      - HOST=0.0.0.0
+      - PYTHONUNBUFFERED=1
+      # API Keys - Set these when running
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY:-}
+      - AMBEE_API_KEY=${AMBEE_API_KEY:-}
+      - COHERE_API_KEY=${COHERE_API_KEY:-}
+      # Email Configuration
+      - GMAIL_USER=${GMAIL_USER:-}
+      - GMAIL_APP_PASSWORD=${GMAIL_APP_PASSWORD:-}
+      # Feature Configuration
+      - ENABLE_EMAIL_ALERTS=true
+      - ENABLE_CHAT_ASSISTANT=true
+      - ENABLE_ADVANCED_ANALYSIS=true
+      - CACHE_TTL=3600
+      - REQUEST_TIMEOUT=30
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/_stcore/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
+    networks:
+      - floodscope-network
+
+networks:
+  floodscope-network:
+    driver: bridge
+
+volumes:
+  floodscope-data:
+  floodscope-logs:
+  floodscope-cache:

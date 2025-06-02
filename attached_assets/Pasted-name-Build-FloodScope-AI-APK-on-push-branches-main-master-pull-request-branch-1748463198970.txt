@@ -1,0 +1,84 @@
+name: Build FloodScope AI APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      AMBEE_API_KEY: 6094cb31937c21dcbd945f7528b59d74790edd2e6e71d6340259d24eb4ee5536
+      OPENWEATHER_API_KEY: 124764ff70f72f2e64aef8c99eac4394
+      SENTINEL_HUB_CLIENT_ID: e7912b9a-fb4f-4ec1-b122-13f37e31e808
+      SENTINEL_HUB_CLIENT_SECRET: OtRfvAj8Iusd1AzDMNP8noTsECEf4ERV
+      COHERE_API_KEY: Iq0oARg9yFRYTkzoey08m8JK00RlwoTyUgnw3r7O
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: ☕ Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: 🔧 Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.0'
+        channel: 'stable'
+
+    - name: 📦 Get Flutter Dependencies
+      run: flutter pub get
+
+    - name: 🏗️ Build APK
+      run: flutter build apk --release
+
+    - name: 📱 Get APK Info
+      run: |
+        echo "APK Size: $(du -h build/app/outputs/flutter-apk/app-release.apk | cut -f1)"
+        echo "APK Path: $(pwd)/build/app/outputs/flutter-apk/app-release.apk"
+
+    - name: 📋 Rename APK
+      run: |
+        mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+
+    - name: 🚀 Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: FloodScope-AI-APK
+        path: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+        retention-days: 30
+
+    - name: 📦 Create GitHub Release
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v1.0.${{ github.run_number }}
+        name: FloodScope AI v1.0.${{ github.run_number }}
+        body: |
+          🌊 **FloodScope AI - Mobile App Release**
+
+          ## 📱 What's New
+          - Real-time flood monitoring and risk assessment
+          - Interactive maps with flood visualization
+          - AI-powered flood predictions
+          - Weather-based flood analysis
+          - Location-based alerts and notifications
+
+          ## 🗝️ API Keys (Hardcoded)
+          - OpenWeather
+          - Ambee
+          - Cohere
+          - Sentinel Hub
+
+          **Compatible with Android 5.0+ devices**
+        files: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

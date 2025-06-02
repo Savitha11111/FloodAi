@@ -1,0 +1,24 @@
+[project]
+name = "repl-nix-workspace"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11"
+dependencies = [
+    "folium>=0.19.6",
+    "opencv-python>=4.11.0.86",
+    "pandas>=2.2.3",
+    "plotly>=6.1.2",
+    "requests>=2.32.3",
+    "streamlit-folium>=0.25.0",
+    "streamlit>=1.45.1",
+    "numpy>=2.2.6",
+    "pillow>=11.2.1",
+    "rasterio>=1.4.3",
+    "scikit-learn>=1.6.1",
+    "scipy>=1.15.3",
+    "scikit-image>=0.25.2",
+    "trafilatura>=2.0.0",
+    "pytz>=2025.2",
+    "firebase-admin>=6.8.0",
+    "sendgrid>=6.12.3",
+]

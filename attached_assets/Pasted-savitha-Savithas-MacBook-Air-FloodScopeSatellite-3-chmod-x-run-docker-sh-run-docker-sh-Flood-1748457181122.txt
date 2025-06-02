@@ -1,0 +1,143 @@
+savitha@Savithas-MacBook-Air FloodScopeSatellite 3 % chmod +x run-docker.sh
+./run-docker.sh
+🌊 FloodScope AI - Single Command Docker Deployment
+==================================================
+✅ Docker is running
+🛑 Stopping any existing FloodScope containers...
+🔨 Building FloodScope AI Docker image...
+WARN[0000] /Users/savitha/Downloads/FloodScopeSatellite 3/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+Compose can now delegate builds to bake for better performance.
+ To do so, set COMPOSE_BAKE=true.
+[+] Building 60.1s (10/14)                                                                       docker:desktop-linux
+ => [floodscope internal] load build definition from Dockerfile                                                  0.0s
+ => => transferring dockerfile: 1.63kB                                                                           0.0s
+ => [floodscope internal] load metadata for docker.io/library/python:3.11-slim                                   1.9s
+ => [floodscope auth] library/python:pull token for registry-1.docker.io                                         0.0s
+ => [floodscope internal] load .dockerignore                                                                     0.0s
+ => => transferring context: 437B                                                                                0.0s
+ => [floodscope 1/9] FROM docker.io/library/python:3.11-slim@sha256:dbf1de478a55d6763afaa39c2f3d7b54b2523061498  0.0s
+ => => resolve docker.io/library/python:3.11-slim@sha256:dbf1de478a55d6763afaa39c2f3d7b54b25230614980276de5cacd  0.0s
+ => [floodscope internal] load build context                                                                     0.1s
+ => => transferring context: 830.28kB                                                                            0.0s
+ => CACHED [floodscope 2/9] WORKDIR /app                                                                         0.0s
+ => [floodscope 3/9] RUN apt-get update && apt-get install -y     gdal-bin     libgdal-dev     libproj-dev      42.3s
+ => [floodscope 4/9] COPY requirements-local.txt ./                                                              0.1s 
+ => ERROR [floodscope 5/9] RUN pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r r  15.6s 
+------                                                                                                                
+ > [floodscope 5/9] RUN pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r requirements-local.txt:
+1.239 Requirement already satisfied: pip in /usr/local/lib/python3.11/site-packages (24.0)
+1.368 Collecting pip
+1.444   Downloading pip-25.1.1-py3-none-any.whl.metadata (3.6 kB)
+1.462 Downloading pip-25.1.1-py3-none-any.whl (1.8 MB)
+1.577    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 17.3 MB/s eta 0:00:00
+1.618 Installing collected packages: pip
+1.618   Attempting uninstall: pip
+1.619     Found existing installation: pip 24.0
+1.647     Uninstalling pip-24.0:
+1.763       Successfully uninstalled pip-24.0
+2.294 Successfully installed pip-25.1.1
+2.294 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2.727 Collecting streamlit==1.29.0 (from -r requirements-local.txt (line 1))
+2.804   Downloading streamlit-1.29.0-py2.py3-none-any.whl.metadata (8.2 kB)
+2.827 Collecting folium==0.15.0 (from -r requirements-local.txt (line 2))
+2.844   Downloading folium-0.15.0-py2.py3-none-any.whl.metadata (3.4 kB)
+2.868 Collecting streamlit-folium==0.16.0 (from -r requirements-local.txt (line 3))
+2.886   Downloading streamlit_folium-0.16.0-py3-none-any.whl.metadata (413 bytes)
+2.923 Collecting requests==2.31.0 (from -r requirements-local.txt (line 4))
+2.942   Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+3.025 Collecting pandas==2.1.4 (from -r requirements-local.txt (line 5))
+3.042   Downloading pandas-2.1.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (18 kB)
+3.184 Collecting numpy==1.25.2 (from -r requirements-local.txt (line 6))
+3.249   Downloading numpy-1.25.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (5.6 kB)
+3.429 Collecting plotly==5.17.0 (from -r requirements-local.txt (line 7))
+3.462   Downloading plotly-5.17.0-py2.py3-none-any.whl.metadata (7.0 kB)
+3.802 Collecting pillow==10.1.0 (from -r requirements-local.txt (line 8))
+3.830   Downloading Pillow-10.1.0-cp311-cp311-manylinux_2_28_aarch64.whl.metadata (9.5 kB)
+3.891 Collecting opencv-python==4.8.1.78 (from -r requirements-local.txt (line 9))
+3.910   Downloading opencv_python-4.8.1.78-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (19 kB)
+3.976 Collecting scikit-learn==1.3.2 (from -r requirements-local.txt (line 10))
+3.994   Downloading scikit_learn-1.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (11 kB)
+4.048 Collecting scikit-image==0.22.0 (from -r requirements-local.txt (line 11))
+4.313   Downloading scikit_image-0.22.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (13 kB)
+4.422 Collecting scipy==1.11.4 (from -r requirements-local.txt (line 12))
+4.442   Downloading scipy-1.11.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (60 kB)
+4.523 Collecting rasterio==1.3.9 (from -r requirements-local.txt (line 13))
+4.537   Downloading rasterio-1.3.9.tar.gz (411 kB)
+4.648   Installing build dependencies: started
+7.513   Installing build dependencies: finished with status 'done'
+7.516   Getting requirements to build wheel: started
+12.94   Getting requirements to build wheel: finished with status 'done'
+12.95   Preparing metadata (pyproject.toml): started
+13.31   Preparing metadata (pyproject.toml): finished with status 'done'
+13.59 Collecting trafilatura==1.6.4 (from -r requirements-local.txt (line 14))
+13.60   Downloading trafilatura-1.6.4-py3-none-any.whl.metadata (16 kB)
+13.64 Collecting altair<6,>=4.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+13.66   Downloading altair-5.5.0-py3-none-any.whl.metadata (11 kB)
+13.68 Collecting blinker<2,>=1.0.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+13.70   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+13.72 Collecting cachetools<6,>=4.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+13.74   Downloading cachetools-5.5.2-py3-none-any.whl.metadata (5.4 kB)
+13.82 Collecting click<9,>=7.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+13.84   Downloading click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
+13.87 Collecting importlib-metadata<7,>=1.4 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+13.89   Downloading importlib_metadata-6.11.0-py3-none-any.whl.metadata (4.9 kB)
+13.91 Collecting packaging<24,>=16.8 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+13.93   Downloading packaging-23.2-py3-none-any.whl.metadata (3.2 kB)
+14.04 Collecting protobuf<5,>=3.20 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.06   Downloading protobuf-4.25.8-cp37-abi3-manylinux2014_aarch64.whl.metadata (541 bytes)
+14.12 Collecting pyarrow>=6.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.13   Downloading pyarrow-20.0.0-cp311-cp311-manylinux_2_28_aarch64.whl.metadata (3.3 kB)
+14.15 Collecting python-dateutil<3,>=2.7.3 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.17   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+14.24 Collecting rich<14,>=10.14.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.26   Downloading rich-13.9.4-py3-none-any.whl.metadata (18 kB)
+14.29 Collecting tenacity<9,>=8.1.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.35   Downloading tenacity-8.5.0-py3-none-any.whl.metadata (1.2 kB)
+14.37 Collecting toml<2,>=0.10.1 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.39   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+14.42 Collecting typing-extensions<5,>=4.3.0 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.44   Downloading typing_extensions-4.13.2-py3-none-any.whl.metadata (3.0 kB)
+14.46 Collecting tzlocal<6,>=1.1 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.47   Downloading tzlocal-5.3.1-py3-none-any.whl.metadata (7.6 kB)
+14.50 Collecting validators<1,>=0.2 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.51   Downloading validators-0.35.0-py3-none-any.whl.metadata (3.9 kB)
+14.54 Collecting gitpython!=3.1.19,<4,>=3.0.7 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.55   Downloading GitPython-3.1.44-py3-none-any.whl.metadata (13 kB)
+14.58 Collecting pydeck<1,>=0.8.0b4 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.59   Downloading pydeck-0.9.1-py2.py3-none-any.whl.metadata (4.1 kB)
+14.62 Collecting tornado<7,>=6.0.3 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.64   Downloading tornado-6.5.1-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (2.8 kB)
+14.69 Collecting watchdog>=2.1.5 (from streamlit==1.29.0->-r requirements-local.txt (line 1))
+14.70   Downloading watchdog-6.0.0-py3-none-manylinux2014_aarch64.whl.metadata (44 kB)
+14.79 Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements-local.txt (line 4))
+14.81   Downloading charset_normalizer-3.4.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (35 kB)
+14.83 Collecting idna<4,>=2.5 (from requests==2.31.0->-r requirements-local.txt (line 4))
+14.84   Downloading idna-3.10-py3-none-any.whl.metadata (10 kB)
+14.87 Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements-local.txt (line 4))
+14.88   Downloading urllib3-2.4.0-py3-none-any.whl.metadata (6.5 kB)
+14.91 Collecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements-local.txt (line 4))
+14.92   Downloading certifi-2025.4.26-py3-none-any.whl.metadata (2.5 kB)
+14.96 Collecting pytz>=2020.1 (from pandas==2.1.4->-r requirements-local.txt (line 5))
+14.97   Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+14.99 Collecting tzdata>=2022.1 (from pandas==2.1.4->-r requirements-local.txt (line 5))
+15.01   Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+15.02 Collecting branca>=0.6.0 (from folium==0.15.0->-r requirements-local.txt (line 2))
+15.04   Downloading branca-0.8.1-py3-none-any.whl.metadata (1.5 kB)
+15.06 Collecting jinja2>=2.9 (from folium==0.15.0->-r requirements-local.txt (line 2))
+15.07   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+15.09 INFO: pip is looking at multiple versions of streamlit-folium to determine which version is compatible with other requirements. This could take a while.
+15.09 ERROR: Cannot install -r requirements-local.txt (line 3) and folium==0.15.0 because these package versions have conflicting dependencies.
+15.09 
+15.09 The conflict is caused by:
+15.09     The user requested folium==0.15.0
+15.09     streamlit-folium 0.16.0 depends on folium<0.15 and >=0.13
+15.09 
+15.09 To fix this you could try to:
+15.09 1. loosen the range of package versions you've specified
+15.09 2. remove package versions to allow pip to attempt to solve the dependency conflict
+15.09 
+15.22 ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+------
+failed to solve: process "/bin/sh -c pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r requirements-local.txt" did not complete successfully: exit code: 1
+❌ Failed to build FloodScope AI
+savitha@Savithas-MacBook-Air FloodScopeSatellite 3 % 

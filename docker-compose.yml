@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  floodscope:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: floodscope-ai
+    ports:
+      - "5000:5000"
+    environment:
+      - AMBEE_API_KEY=${AMBEE_API_KEY:-your_ambee_api_key_here}
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY:-your_openweather_api_key_here}
+      - SENTINELHUB_CLIENT_ID=${SENTINELHUB_CLIENT_ID:-your_sentinelhub_client_id_here}
+      - SENTINELHUB_CLIENT_SECRET=${SENTINELHUB_CLIENT_SECRET:-your_sentinelhub_client_secret_here}
+      - TZ=Asia/Kolkata
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - floodscope_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/_stcore/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  floodscope_data:
+
+networks:
+  default:
+    name: floodscope-network

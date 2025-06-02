@@ -1,0 +1,49 @@
+The flood risk data you provided for Bengaluru (coordinates: 12.9716, 77.5946) on May 28, 2025, does **not accurately reflect** the recent and ongoing flood situation in the city.
+
+## Comparison with Real-Time Reports
+
+### Your Data
+- **Flood Risk Level:** Low
+- **Affected Area:** 0.16 km²
+- **Confidence Score:** 70%
+- **Water Level:** 0.0 m
+- **24h Rainfall:** 1.6 mm
+
+### Actual Situation (Late May 2025)
+- **Bengaluru has just experienced its wettest May in recorded history, with over 307.9 mm of rainfall by May 26, 2025, far exceeding the monthly average and breaking previous records[5].**
+- **Multiple rounds of intense rainfall (over 100 mm in 24 hours in some areas) have caused severe flooding, with hundreds of homes inundated, major roads and underpasses submerged, and several lakes overflowing[1][4][5].**
+- **Flooding extended to many neighborhoods, including Kengeri, RR Nagar, Koramangala, HAL Airport, and Whitefield, with water levels reaching knee to waist height in some areas[1][4][7].**
+- **The city government and BBMP have identified over 210 flood-prone areas, and while 70% have seen mitigation efforts, dozens of trouble spots remain vulnerable[2].**
+- **The India Meteorological Department (IMD) issued a red alert for Bengaluru and the region, warning of more heavy rainfall[5][6].**
+
+## Table: Your Data vs. Actual Conditions
+
+| Parameter         | Your Data         | Actual Situation (May 28, 2025)                  |
+|-------------------|------------------|--------------------------------------------------|
+| Flood Risk Level  | Low              | Moderate to Severe (IMD red alert, widespread flooding)[1][5][6] |
+| Affected Area     | 0.16 km²         | Multiple neighborhoods, hundreds of homes, several km²[1][4][7] |
+| Confidence Score  | 70%              | High (based on ongoing rainfall and official alerts)[5][6] |
+| Water Level       | 0.0 m            | Up to 1–1.5 m in some localities[4][7]           |
+| 24h Rainfall      | 1.6 mm           | 100–130 mm in 24 hours in recent events[1][4][5] |
+
+## Conclusion
+
+**Your flood risk data underestimates the current risk and impact in Bengaluru.**  
+- The flood risk is moderate to severe, not low.
+- The affected area and water levels are much higher than indicated.
+- Rainfall totals are far above your reported value.
+
+Bengaluru is experiencing historic rainfall and significant urban flooding as of late May 2025, with continuing risks due to the early and intense monsoon onset[1][4][5][6].
+
+Citations:
+[1] https://timesofindia.indiatimes.com/city/delhi/breaking-news-today-20-may-2025-live-updates-bengaluru-rainfall-ahmedabad-chandola-lake-demolition-drive-phase-2-begins-beating-retreat-restarts-today-punjab-border-check-posts-chennai-weather-imd-temperature/liveblog/121281967.cms
+[2] https://www.hindustantimes.com/cities/bengaluru-news/bengaluru-heavy-rain-flooding-issues-resolved-in-70-areas-remaining-to-be-fixed-soon-dk-shivakumar-101747706100656.html
+[3] https://varunamitra.karnataka.gov.in/Default/floodforecast?service=FloodForecast
+[4] https://www.newindianexpress.com/cities/bengaluru/2025/May/19/bengaluru-reels-under-floods-after-heavy-rainfall
+[5] https://www.indiatoday.in/cities/bengaluru/story/bengaluru-highest-may-rainfall-record-wetter-than-2023-early-monsoon-hits-city-2731082-2025-05-27
+[6] https://www.gdacs.org/report.aspx?eventid=1103280&episodeid=1&eventtype=FL
+[7] https://economictimes.com/news/bengaluru-news/bengalurus-rain-crisis-city-records-heaviest-deluge-since-2017-leaves-five-dead-hundreds-of-homes-submerged-in-indias-it-capital/articleshow/121303422.cms
+[8] https://www.deccanherald.com/india/karnataka/bengaluru/gaps-in-dealing-with-bengaluru-floods-3555392
+
+---
+Answer from Perplexity: https://www.perplexity.ai/search/current-location-kerala-coordi-Cr39v9IuRfucL9odfSon9w?utm_source=copy_output

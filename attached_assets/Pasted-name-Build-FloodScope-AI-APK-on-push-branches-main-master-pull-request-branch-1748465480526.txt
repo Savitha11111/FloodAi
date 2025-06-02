@@ -1,0 +1,91 @@
+name: Build FloodScope AI APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: ☕ Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: 🔧 Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.0'
+        channel: 'stable'
+
+    - name: 📦 Get Flutter Dependencies
+      run: flutter pub get
+
+    - name: 🏗️ Build APK
+      run: flutter build apk --release --verbose
+
+    - name: 📱 Get APK Info
+      run: |
+        echo "APK Size: $(du -h build/app/outputs/flutter-apk/app-release.apk | cut -f1)"
+        echo "APK Path: $(pwd)/build/app/outputs/flutter-apk/app-release.apk"
+
+    - name: 📋 Rename APK
+      run: |
+        mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+
+    - name: 🚀 Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: FloodScope-AI-APK
+        path: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+        retention-days: 30
+
+    - name: 📱 Create Release
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v1.0.${{ github.run_number }}
+        name: FloodScope AI v1.0.${{ github.run_number }}
+        body: |
+          🌊 **FloodScope AI - Mobile App Release**
+          
+          ## 📱 What's New
+          - Real-time flood monitoring and risk assessment
+          - Interactive maps with flood visualization
+          - AI-powered flood predictions
+          - Weather-based flood analysis
+          - Location-based alerts and notifications
+          
+          ## 🔧 Installation Instructions
+          1. Download the APK file below
+          2. Enable "Install from Unknown Sources" in Android Settings
+          3. Install the APK on your Android device
+          4. Grant location permissions for full functionality
+          5. Add your API keys for real-time data
+          
+          ## 🗝️ API Keys Required
+          - OpenWeather API Key (for weather data)
+          - Ambee API Key (for flood monitoring)
+          - Cohere API Key (for AI analysis)
+          
+          ## 📊 App Features
+          ✅ Real-time flood risk monitoring  
+          ✅ Interactive flood maps  
+          ✅ Weather integration  
+          ✅ AI assistant  
+          ✅ Location services  
+          ✅ Smart alerts  
+          
+          **Compatible with Android 5.0+ devices**
+        files: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

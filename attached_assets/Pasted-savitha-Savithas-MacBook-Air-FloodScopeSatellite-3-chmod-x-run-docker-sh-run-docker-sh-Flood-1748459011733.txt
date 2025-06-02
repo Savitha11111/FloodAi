@@ -1,0 +1,56 @@
+savitha@Savithas-MacBook-Air FloodScopeSatellite 3 % chmod +x run-docker.sh
+./run-docker.sh
+🌊 FloodScope AI - Single Command Docker Deployment
+==================================================
+✅ Docker is running
+🛑 Stopping any existing FloodScope containers...
+🔨 Building FloodScope AI Docker image...
+WARN[0000] /Users/savitha/Downloads/FloodScopeSatellite 3/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+Compose can now delegate builds to bake for better performance.
+ To do so, set COMPOSE_BAKE=true.
+[+] Building 3.6s (16/16) FINISHED                                                               docker:desktop-linux
+ => [floodscope internal] load build definition from Dockerfile                                                  0.0s
+ => => transferring dockerfile: 1.77kB                                                                           0.0s
+ => [floodscope internal] load metadata for docker.io/library/python:3.11-slim                                   2.9s
+ => [floodscope auth] library/python:pull token for registry-1.docker.io                                         0.0s
+ => [floodscope internal] load .dockerignore                                                                     0.0s
+ => => transferring context: 437B                                                                                0.0s
+ => [floodscope 1/9] FROM docker.io/library/python:3.11-slim@sha256:dbf1de478a55d6763afaa39c2f3d7b54b2523061498  0.0s
+ => => resolve docker.io/library/python:3.11-slim@sha256:dbf1de478a55d6763afaa39c2f3d7b54b25230614980276de5cacd  0.0s
+ => [floodscope internal] load build context                                                                     0.0s
+ => => transferring context: 50.05kB                                                                             0.0s
+ => CACHED [floodscope 2/9] WORKDIR /app                                                                         0.0s
+ => CACHED [floodscope 3/9] RUN apt-get update && apt-get install -y     gdal-bin     libgdal-dev     libproj-d  0.0s
+ => CACHED [floodscope 4/9] COPY requirements-local.txt ./                                                       0.0s
+ => CACHED [floodscope 5/9] RUN pip install --no-cache-dir --upgrade pip &&     pip install --no-cache-dir -r r  0.0s
+ => [floodscope 6/9] COPY . .                                                                                    0.0s
+ => [floodscope 7/9] RUN mkdir -p .streamlit                                                                     0.1s
+ => [floodscope 8/9] RUN echo '[server]\nheadless = true\naddress = "0.0.0.0"\nport = 5000\nenableCORS = false\  0.1s
+ => [floodscope 9/9] RUN mkdir -p data                                                                           0.1s
+ => [floodscope] exporting to image                                                                              0.1s
+ => => exporting layers                                                                                          0.1s
+ => => exporting manifest sha256:2385892c0045c951956f98aee9670a5ce0a29f67ceb208530c8949deea08cac4                0.0s
+ => => exporting config sha256:122b7b7d0eba946c454292fdbb2d3b960373d032707d6b674be49e613da0a4ce                  0.0s
+ => => exporting attestation manifest sha256:0f69b6931bda69b0e2d3b8738d4e631f2709146b4553801a053319e892429513    0.0s
+ => => exporting manifest list sha256:53328cf523cf1361802ce2b28e7717f1aeae6e0596d056b0f38846e6c1372d46           0.0s
+ => => naming to docker.io/library/floodscopesatellite3-floodscope:latest                                        0.0s
+ => => unpacking to docker.io/library/floodscopesatellite3-floodscope:latest                                     0.0s
+ => [floodscope] resolving provenance for metadata file                                                          0.0s
+[+] Building 1/1
+ ✔ floodscope  Built                                                                                             0.0s 
+🚀 Starting FloodScope AI...
+WARN[0000] /Users/savitha/Downloads/FloodScopeSatellite 3/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 2/2
+ ✔ Network floodscope-network  Created                                                                           0.0s 
+ ✔ Container floodscope-ai     Started                                                                           0.2s 
+
+✅ FloodScope AI is now running!
+🌐 Access your application at: http://localhost:5000
+
+📊 Commands:
+  View logs: docker-compose logs -f
+  Stop app:  docker-compose down
+  Restart:   docker-compose restart
+
+⏳ Please wait 30-60 seconds for the application to fully load...
+savitha@Savithas-MacBook-Air FloodScopeSatellite 3 % 

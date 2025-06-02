@@ -1,0 +1,62 @@
+Run flutter build apk --release
+Upgrading build.gradle
+Running Gradle task 'assembleRelease'...                        
+FAILURE: Build failed with an exception.
+* What went wrong:
+Task 'assembleRelease' not found in root project 'android'.
+* Try:
+> Run gradlew tasks to get a list of available tasks.
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+* Get more help at https://help.gradle.org
+BUILD FAILED in 1m 31s
+Running Gradle task 'assembleRelease'...                           93.5s
+ProcessException: Process exited abnormally:
+Welcome to Gradle 7.5!
+Here are the highlights of this release:
+ - Support for Java 18
+ - Support for building with Groovy 4
+ - Much more responsive continuous builds
+ - Improved diagnostics for dependency resolution
+For more details see https://docs.gradle.org/7.5/release-notes.html
+FAILURE: Build failed with an exception.
+* What went wrong:
+Project 'app' not found in root project 'android'.
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+* Get more help at https://help.gradle.org
+BUILD FAILED in 689ms
+  Command: /home/runner/work/floodapp/floodapp/android/gradlew app:tasks --all --console=auto
+#0      RunResult.throwException (package:flutter_tools/src/base/process.dart:127:5)
+#1      _DefaultProcessUtils.run (package:flutter_tools/src/base/process.dart:280:19)
+<asynchronous suspension>
+#2      flavorUndefinedHandler.<anonymous closure> (package:flutter_tools/src/android/gradle_errors.dart:372:38)
+<asynchronous suspension>
+#3      AndroidGradleBuilder.buildGradleApp (package:flutter_tools/src/android/gradle.dart:496:40)
+<asynchronous suspension>
+#4      AndroidGradleBuilder.buildApk (package:flutter_tools/src/android/gradle.dart:220:5)
+<asynchronous suspension>
+#5      BuildApkCommand.runCommand (package:flutter_tools/src/commands/build_apk.dart:116:5)
+<asynchronous suspension>
+#6      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1350:27)
+<asynchronous suspension>
+#7      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:19)
+<asynchronous suspension>
+#8      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#9      FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:348:9)
+<asynchronous suspension>
+#10     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:19)
+<asynchronous suspension>
+#11     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:294:5)
+<asynchronous suspension>
+#12     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:112:9)
+<asynchronous suspension>
+#13     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:19)
+<asynchronous suspension>
+#14     main (package:flutter_tools/executable.dart:90:3)
+<asynchronous suspension>
+Error: Process completed with exit code 1.

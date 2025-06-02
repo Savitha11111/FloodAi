@@ -1,0 +1,95 @@
+def main():
+    """Main application function"""
+
+    # Header
+    st.title("🌊 FloodScope - AI-Driven Flood Detection System")
+    st.markdown("Real-time flood mapping using satellite imagery and AI")
+
+    # Sidebar for controls
+    with st.sidebar:
+        st.header("🎛️ Control Panel")
+
+        # Location Input Section
+        st.subheader("📍 Location Selection")
+        location_method = st.radio("Choose input method:", ["Place Name", "Coordinates"])
+
+        if location_method == "Place Name":
+            place_name = st.text_input("Enter place name:", placeholder="e.g., Houston, Texas")
+            if st.button("Search Location") and place_name:
+                with st.spinner("Geocoding location..."):
+                    coords = services['geocoding'].geocode(place_name)
+                    if coords:
+                        st.session_state.current_location = {
+                            'name': place_name,
+                            'lat': coords[0],
+                            'lon': coords[1]
+                        }
+                        st.success(f"Location found: {coords[0]:.4f}, {coords[1]:.4f}")
+                    else:
+                        st.error("Location not found. Please try a different name.")
+        else:
+            col1, col2 = st.columns(2)
+            with col1:
+                lat = st.number_input("Latitude:", value=29.7604, format="%.4f")
+            with col2:
+                lon = st.number_input("Longitude:", value=-95.3698, format="%.4f")
+
+            if st.button("Set Coordinates"):
+                st.session_state.current_location = {
+                    'name': f"Custom Location",
+                    'lat': lat,
+                    'lon': lon
+                }
+                st.success("Coordinates set successfully!")
+
+        # Date Selection
+        st.subheader("📅 Analysis Date")
+        analysis_date = st.date_input(
+            "Select date for analysis:",
+            value=datetime.now().date(),
+            max_value=datetime.now().date()
+        )
+
+        # Monitoring Controls
+        st.subheader("🔄 Real-time Monitoring")
+        if st.button("Start Monitoring" if not st.session_state.monitoring_active else "Stop Monitoring"):
+            st.session_state.monitoring_active = not st.session_state.monitoring_active
+            if st.session_state.monitoring_active:
+                st.success("Monitoring started!")
+            else:
+                st.info("Monitoring stopped.")
+
+        # Auto-analysis toggle
+        st.subheader("⚙️ Automation Settings")
+        auto_run = st.checkbox("Auto-analyze when data is outdated", value=True)
+        st.session_state.auto_run = auto_run
+
+        # Analysis Controls
+        if st.session_state.current_location:
+            if st.button("🔍 Analyze Flood Risk", type="primary"):
+                analyze_location()
+
+    # Auto-analyze if conditions apply
+    if st.session_state.current_location and st.session_state.auto_run:
+        flood_data = st.session_state.get('flood_data')
+        now = datetime.now()
+
+        needs_refresh = (
+            not flood_data or
+            (now - flood_data.get('timestamp', now)).total_seconds() > 3600 or
+            flood_data['flood_results'].get('rainfall_24h', 0) < 25
+        )
+
+        if needs_refresh:
+            st.info("⚠️ Detected outdated or low-rainfall flood data. Auto-analyzing with latest conditions...")
+            analyze_location()
+            st.experimental_rerun()
+
+    # Main content
+    if st.session_state.current_location:
+        display_main_content()
+    else:
+        display_welcome_screen()
+
+    # Chat assistant
+    display_chat_assistant()

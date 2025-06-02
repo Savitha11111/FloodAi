@@ -1,0 +1,1216 @@
+Natural Disasters
+Introduction
+The Ambee natural disasters API delivers comprehensive natural disaster data, including earthquakes, cyclones, floods, volcanoes, droughts, wildfires, and other calamities.
+
+List of supported events:
+name	event type	description
+Tsunamis
+TN
+Tsunamis and related sea waves
+Earthquake
+EQ
+Earthquakes and related seismic activities
+Tropical Cyclones
+TC
+Tropical cyclones including hurricanes, typhoons & cyclones
+Wildfires
+WF
+Wildfires and fire related events which includes widlfires, burn off, bushfire, fires, pre fire alerts, structure fire.
+Floods
+FL
+Floods including flash floods and general flooding
+Extreme Temperature
+ET
+Extreme temperature events including heat waves, cold waves, hot day conditions, etc.
+Droughts
+DR
+Droughts and prolonged dry conditions
+Severe storms
+SW
+Severe storms, thunderstorms & related weather phenomena which includes lightning, gusty winds, thunder shower, violent wind, storm surge, hailstorm, heavy rain and light rain
+Sea Ice
+SI
+Sea ice conditions
+Volcano
+VO
+Volcanic activities and eruptions
+Landslides
+LS
+Landslides, avalanches and related ground movement
+Miscellaneous
+Misc
+Miscellaneous events including unique imagery & technical disasters.
+Eventwise Details
+Event Type:
+Earthquake (EQ)
+arrow
+The table below provides descriptions for the possible values of the ‘details’ response parameter. The ‘details’ attribute offers additional information for each type of disaster event. You can find this response parameter under the eventwise search endpoint.
+
+field	description
+active
+Indicates whether the earthquake event is currently active or ongoing.
+alert_level
+The level of alert issued for the earthquake, indicating its severity.
+businesses_destroyed
+The impact on businesses due to the earthquake.
+country
+The country where the earthquake occurred.
+country_code
+The ISO code representing the country of the earthquake.
+death
+The total number of fatalities caused by the earthquake.
+depth
+The depth at which the earthquake occurred.
+earthquake_magnitude
+The measured magnitude of the earthquake.
+episode_alert_level
+The alert level for a specific episode within the earthquake event.
+episode_alert_score
+A score representing the severity of the earthquake episode.
+event_date
+The date when the earthquake occurred.
+event_description
+A brief description of the earthquake event.
+event_magnitude
+The magnitude of the specific earthquake event.
+event_name
+The name or identifier of the earthquake event.
+event_place
+The location or region where the earthquake took place.
+exposed_population
+The estimated population exposed to the earthquake.
+homes_destroyed
+The number of homes impacted as a result of the earthquake.
+injuries
+The total number of injuries reported due to the earthquake.
+inserted_at
+The timestamp when the earthquake data was recorded in the system.
+insurance_cost
+Estimated cost of insurance claims due to the earthquake damage.
+introduction
+An introduction or overview of the earthquake event.
+lat_lon
+The latitude and longitude coordinates of the earthquake's epicenter.
+severity
+The overall severity of the earthquake event.
+severity_description
+A detailed description of the earthquake's severity.
+unit
+The unit of measurement for the earthquake data (e.g., magnitude, depth).
+polygon_date
+The date when the geographical polygon data was recorded.
+Natural Disasters Latest
+Offers real-time natural disaster data with insights into episode-wise severity, risk levels, and more.
+
+Latest - Geospatial search
+Retrieve Natural Disasters data using geographic coordinates (latitude/longitude).
+
+GET
+https://api.ambeedata.com
+/disasters/latest/by-lat-lng
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+In every 6 hours
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+lat
+
+number
+required
+Latitude of the search location.
+Allowed Value:
+Latitude must be between -90 and 90
+lng
+
+number
+required
+Longitude of the search location.
+Allowed Value:
+Longitude must be between -180 and 180
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/latest/by-lat-lng?lat=-15.76166996&lng=-72.48771045489497&limit=1&page=1
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/latest/by-lat-lng?lat=-15.76166996&lng=-72.48771045489497",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Latest - Continentwise search
+Retrieve natural disaster data using specific continent codes.
+
+GET
+https://api.ambeedata.com
+/disasters/latest/by-continent
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+In every 6 hours
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+continent
+
+string
+required
+The continent value should be AFR, ANT, ASIA, AUS, EUR, NAR, SAR or Ocean.
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/latest/by-continent?continent=NAR&page=1&limit=1
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/latest/by-continent?continent=NAR&page=1&limit=1",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Latest - Countrywise search
+Retrieve natural disaster data using specific country codes.
+
+GET
+https://api.ambeedata.com
+/disasters/latest/by-country-code
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+In every 6 hours
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+countryCode
+
+string
+required
+3 letter ISO country code
+Example:
+GBR, USA, IND, etc
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/latest/by-country-code?countryCode=IND&limit=1&page=1
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/latest/by-country-code?countryCode=IND&limit=1&page=1",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Natural Disasters Historical
+Access historical natural disaster data to understand the patterns and trends of natural disasters in the past to create a safer future.
+
+Historical - Geospatial search
+Retrieve natural disaster data using geographic coordinates (latitude/longitude)
+
+GET
+https://api.ambeedata.com
+/disasters/history/by-lat-lng
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+Not Applicable
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+lat
+
+number
+required
+Latitude of the search location.
+Allowed Value:
+Latitude must be between -90 and 90
+lng
+
+number
+required
+Longitude of the search location.
+Allowed Value:
+Longitude must be between -180 and 180
+from
+
+date
+required
+Starting timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+to
+
+date
+required
+Ending timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/history/by-lat-lng?lat=40.4549&lng=36.3025&from=2024-05-31 12:00:00&to=2024-07-31 08:00:00&limit=1&page=1
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/history/by-lat-lng?lat=40.4549&lng=36.3025&from=2024-05-31 12:00:00&to=2024-07-31 08:00:00&limit=1&page=1",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Historical - Continentwise search
+Retrieve natural disasters data using the desired place name and time period.
+
+GET
+https://api.ambeedata.com
+/disasters/history/by-continent
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+Not Applicable
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+continent
+
+string
+required
+The continent value should be AFR, ANT, ASIA, AUS, EUR, NAR, SAR or Ocean.
+from
+
+date
+required
+Starting timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+to
+
+date
+required
+Ending timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/history/by-continent?continent=ANT&from=2024-07-01 12:00:00&to=2024-07-31 08:00:00&limit=1&page=1
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/history/by-continent?continent=ANT&from=2024-07-01 12:00:00&to=2024-07-31 08:00:00&limit=1&page=1",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Historical - Countrywise search
+Retrieve historical natural disasters data using the specific country codes.
+
+GET
+https://api.ambeedata.com
+/disasters/history/by-country-code
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+Not Applicable
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+countryCode
+
+string
+required
+3 letter ISO country code
+Example:
+GBR, USA, IND, etc
+from
+
+date
+required
+Starting timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+to
+
+date
+required
+Ending timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/history/by-country-code?countryCode=IND&from=2024-07-01 12:00:00&to=2024-07-31 08:00:00&limit=1&page=1
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/history/by-country-code?countryCode=IND&from=2024-07-01 12:00:00&to=2024-07-31 08:00:00&limit=1&page=1",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Historical - Historywise Search
+Retrieve historical natural disaster data using the start date. Historical data is available on demand for a longer time frame. Get in touch
+
+GET
+https://api.ambeedata.com
+/disasters/history
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+Not Applicable
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+from
+
+date
+required
+Starting timestamp of the search period.
+Format:
+YYYY-MM-DD hh:mm:ss
+eventType
+
+string
+optional
+Event Type refers to the type of event to be queried. For the supported event types, refer to the List of supported events section.
+page
+
+number
+optional
+Specifies the page number of the results to be returned. The default value is 1, which retrieves the first page.
+Default Value:
+1
+limit
+
+number
+optional
+Specifies the number of records to be returned
+Default Value:
+1
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/history?from=2024-07-01 15:00:00&page=1&limit=3
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/history?from=2024-07-01 15:00:00&page=1&limit=3",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Natural Disasters Events
+Ambee's Natural Disaster API provides detailed information on various types of natural disasters. Find the full list of the latest and historical disaster events covered based on event_id refer to the List of supported events section.
+
+Events - Eventwise search
+Provides detailed information about a disaster event based on the event ID returned in any of the latest or historical APIs.
+
+GET
+https://api.ambeedata.com
+/disasters/by-eventId
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+In every 6 hours
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+eventId
+
+string
+required
+Unique identification for a specific disaster event.
+geometry
+
+boolean
+optional
+Polygon geometry data for the event is available based on the geometry flag (true/false).
+Allowed value:
+True
+False
+Default value:
+False
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/by-eventId?eventId=66860a11a53090009d54d789
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/by-eventId?eventId=66860a11a53090009d54d789",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Natural Disasters Events (Source Eventwise)
+Ambee's Natural Disaster API provides detailed information on various types of natural disasters. Refer to the List of supported events section to find the full list of the latest and historical disaster events covered based on source-eventId.
+
+Source Eventwise search (Latest)
+Provides detailed information about a disaster event based on the source event ID returned in any of the latest or historical APIs.
+
+GET
+https://api.ambeedata.com
+/disasters/latest/by-source-eventId
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+Every 6 hours
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+eventId
+
+string
+required
+Unique identification for a specific disaster event.
+geometry
+
+boolean
+optional
+Polygon geometry data for the event is available based on the geometry flag (true/false).
+Allowed value:
+True
+False
+Default value:
+False
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/latest/by-source-eventId?sourceEventId=678a11b1f15456e007a91756
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/latest/by-source-eventId?sourceEventId=678a11b1f15456e007a91756",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Source Eventwise search (History)
+Provides detailed information about a disaster event based on the source event ID returned in any of the latest or historical APIs.
+
+GET
+https://api.ambeedata.com
+/disasters/history/by-source-eventId
+
+Data
+Natural Disasters
+Duration
+Last 1 month
+Interval
+Not Applicable
+Updates
+Every 6 hours
+Coverage
+Global
+Request
+Response
+Try Playground
+arr
+Headers
+x-api-key
+
+string
+required
+Unique key obtained after signup.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Content-type
+
+string
+optional
+Default Value:
+application/JSON
+Accept-Language
+
+string
+optional
+Specify your language with English as the default language.
+Allowed Value:
+LANGUAGE_CODE
+Default Value:
+English
+Query Parameters
+eventId
+
+string
+required
+Unique identification of the disaster event from the source
+geometry
+
+boolean
+optional
+Polygon geometry data for the event is available based on the geometry flag (true/false).
+Allowed value:
+True
+False
+Default value:
+False
+SAMPLE URL
+
+https://api.ambeedata.com/disasters/history/by-source-eventId?sourceEventId=676102a5fea25dea28c0e89f
+SAMPLE REQUEST
+
+Node.js
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "api.ambeedata.com",
+	"port": null,
+	"path": "/disasters/history/by-source-eventId?sourceEventId=676102a5fea25dea28c0e89f",
+	"headers": {
+		"x-api-key": "API_KEY",
+		"Content-type": "application/json"
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+		console.log(body.toString());
+	});
+});
+
+req.end();
+Was this page helpful?
+happy-emoji
+Yes
+
+sad-emoji
+No
+
+Need Help?
+
+Raise a ticket
+Check API status
+View change log
+Privacy Policy
+Terms & Conditions
