@@ -185,7 +185,10 @@ def main():
                     st.info("Enter an email address above to subscribe")
         else:
             st.info("Run flood analysis first to enable email reports")
-    
+        st.markdown("---")
+        st.subheader(" ❤ ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ ꜱᴀᴠɪᴛʜᴀ ")
+        st.subheader(" ❤ ʀᴠ ᴄᴏʟʟᴇɢᴇ ᴏꜰ ᴇɴɢɪɴᴇᴇʀɪɴɢ ")
+        
     # Auto-analyze if conditions apply
     if st.session_state.current_location and st.session_state.auto_run:
         flood_data = st.session_state.get('flood_data')
