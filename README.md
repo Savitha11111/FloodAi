@@ -1,14 +1,8 @@
-# FloodScope AI - Enhanced Flood Detection System
+# FloodScope - An AI-Driven Flood MappingSystemUsing Dual Satellite Imagery
 
 An advanced AI-powered flood detection and monitoring system that provides comprehensive, real-time flood risk assessments using cutting-edge technologies and multi-source data integration.
 
 ## 🌊 Key Features
-
-### Real-time Monitoring
-- **Live flood detection** with Ambee API integration
-- **Weather-based prediction** using OpenWeather data
-- **Satellite imagery analysis** with Sentinel Hub
-- **Accurate time correlation** with IST timezone support
 
 ### Advanced Analytics
 - **Multi-source data validation** for enhanced accuracy
@@ -59,23 +53,6 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## 🔑 Required API Keys
-
-### 1. OpenWeather API (Free)
-- **Purpose:** Real-time weather data and rainfall information
-- **Get it:** https://openweathermap.org/api
-- **Variable:** `OPENWEATHER_API_KEY`
-
-### 2. Ambee API (Free tier available)
-- **Purpose:** Real-time flood monitoring and disaster data
-- **Get it:** https://www.getambee.com/
-- **Variable:** `AMBEE_API_KEY`
-
-### 3. Sentinel Hub API (Free tier available)
-- **Purpose:** Satellite imagery for visual flood detection
-- **Get it:** https://apps.sentinel-hub.com/
-- **Variables:** `SENTINELHUB_CLIENT_ID`, `SENTINELHUB_CLIENT_SECRET`
-
 ## 📱 How to Use
 
 1. **Select Location:** Click on the map or use the search feature
@@ -91,12 +68,6 @@ chmod +x install.sh
 - **Professional Interface:** Clean, modern design with intuitive navigation
 - **Time Accuracy:** Proper IST timezone handling for Indian locations
 
-## 📊 Data Sources
-
-- **Ambee API:** Real-time disaster and flood monitoring
-- **OpenWeather API:** Current weather and precipitation data
-- **Sentinel Hub:** High-resolution satellite imagery
-- **Multi-source Validation:** Cross-reference for enhanced accuracy
 
 ## 🐳 Docker Configuration
 
