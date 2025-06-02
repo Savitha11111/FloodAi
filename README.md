@@ -1,4 +1,4 @@
-# FloodScope - An AI-Driven Flood MappingSystemUsing Dual Satellite Imagery
+# FloodScope - An AI-Driven Flood Mapping System Using Dual Satellite Imagery
 
 An advanced AI-powered flood detection and monitoring system that provides comprehensive, real-time flood risk assessments using cutting-edge technologies and multi-source data integration.
 
