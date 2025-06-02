@@ -53,23 +53,6 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## 🔑 Required API Keys
-
-### 1. OpenWeather API (Free)
-- **Purpose:** Real-time weather data and rainfall information
-- **Get it:** https://openweathermap.org/api
-- **Variable:** `OPENWEATHER_API_KEY`
-
-### 2. Ambee API (Free tier available)
-- **Purpose:** Real-time flood monitoring and disaster data
-- **Get it:** https://www.getambee.com/
-- **Variable:** `AMBEE_API_KEY`
-
-### 3. Sentinel Hub API (Free tier available)
-- **Purpose:** Satellite imagery for visual flood detection
-- **Get it:** https://apps.sentinel-hub.com/
-- **Variables:** `SENTINELHUB_CLIENT_ID`, `SENTINELHUB_CLIENT_SECRET`
-
 ## 📱 How to Use
 
 1. **Select Location:** Click on the map or use the search feature
