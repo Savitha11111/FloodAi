@@ -4,12 +4,6 @@ An advanced AI-powered flood detection and monitoring system that provides compr
 
 ## 🌊 Key Features
 
-### Real-time Monitoring
-- **Live flood detection** with Ambee API integration
-- **Weather-based prediction** using OpenWeather data
-- **Satellite imagery analysis** with Sentinel Hub
-- **Accurate time correlation** with IST timezone support
-
 ### Advanced Analytics
 - **Multi-source data validation** for enhanced accuracy
 - **AI-powered risk assessment** with confidence scoring
